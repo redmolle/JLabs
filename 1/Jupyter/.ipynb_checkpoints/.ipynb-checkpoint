@@ -1,0 +1,227 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Установка и RStudio\n",
+    "\n",
+    "Отчет составил: Князев Константин  \n",
+    "Группа: БИСО-02-15\n",
+    "\n",
+    "## Цель работы\n",
+    "Познакомиться со интерактивной вычислительной средой Jupyter Notebook, благодаря установке аналогичной системе RStudio.\n",
+    "для создания динамических отчетов, содержащих упорядоченный список ячеек ввода / вывода, который может содержать код, текст (с использованием языка разметки Markdown), математику, графики и мультимедиа.\n",
+    "## Системные требования\n",
+    "* ОС: Windows 10 версии 1909\n",
+    "* Процессор: Intel Core i5\n",
+    "* RAM: 8Гб DDR3\n",
+    "* Более мощная конфигурация"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Предисловие\n",
+    "R – один из самых востребованных языков программирования в сфере анализа данных и машинного обучения. Он обладает большой мощностью и огромными статистическими возможностями, позволяет удобно работать с большими объемами информации.\n",
+    "R – отличный выбор для аналитика данных и data scientist.\n",
+    "Сложность языка умеренная, а его перспективы весма велики."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<Figure size 640x480 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "table = pd.read_excel('AccompanyingFiles\\Plots\\data.xlsx')\n",
+    "languages = table.values[:, 0]\n",
+    "percents = table.values[:, 1]\n",
+    "\n",
+    "\n",
+    "fig, ax = plt.subplots()\n",
+    "wedges, texts, autotexts = ax.pie(percents, labels=languages, autopct='%1.2f%%')\n",
+    "ax.axis('equal')\n",
+    "ax.set_title('Перспективность языков согласно StackOverflow')\n",
+    "ax.legend(loc='upper left', bbox_to_anchor=(1.0, 1.0))\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "## Этапы установки RStudio\n",
+    "1. Скачивание языка R;\n",
+    "2. Установка языка R;\n",
+    "3. Скачивание RStudio;\n",
+    "4. Установка RStudio.\n",
+    "\n",
+    "### Шаг №1\n",
+    "1. Переходим по кликабельной [ссылке][link1] для скачивания последней версии языка R для Windows.\n",
+    "2. Проверим легитимность скаченного установщика, указав ниже путь до скаченного файла, либо воспользуемся прилагаемым установщик, тогда путь менять **не надо**.\n",
+    "[link1]: https://cran.r-project.org/bin/windows/base/release.htm"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Legal installer, everything is awesome :)\n"
+     ]
+    }
+   ],
+   "source": [
+    "path_to_installer = 'AccompanyingFiles\\Installation\\R-3.6.1-win.exe'\n",
+    "\n",
+    "\n",
+    "import requests\n",
+    "import re\n",
+    "import hashlib\n",
+    "\n",
+    "extract_md5_pattern = 'b\\'([0-9a-z]+) \\*R-3\\.6\\.1-win\\.exe\\\\\\\\n\\''\n",
+    "r_url = 'https://cran.r-project.org/bin/windows/base/md5sum.txt'\n",
+    "resp = requests.get(r_url)\n",
+    "original_md5 = re.match(extract_md5_pattern, str(resp.content)).group(1)\n",
+    "downloaded_md5 = hashlib.md5(open(path_to_installer,'rb').read()).hexdigest()\n",
+    "\n",
+    "if original_md5 != downloaded_md5:\n",
+    "    print('Not legal installer, something going wrong :(')\n",
+    "else:\n",
+    "    print('Legal installer, everything is awesome :)')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Шаг №2\n",
+    "Запустим установщик."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "!AccompanyingFiles\\Installation\\R-3.6.1-win.exe"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "И проведем стандартную установку с выбором расположения установки, а также необходимых параметров.  \n",
+    "\n",
+    "\n",
+    "![][pic1] | ![][pic2]\n",
+    "---|---\n",
+    "![][pic3] | ![][pic4]\n",
+    "![][pic5] | ![][pic6]\n",
+    "![][pic7] | ![][pic8]\n",
+    "![][pic9] | ![][pic10]\n",
+    "![][pic11]\n",
+    "\n",
+    "[pic1]: AccompanyingFiles\\Pics\\1.jpg\n",
+    "[pic2]: AccompanyingFiles\\Pics\\2.jpg\n",
+    "[pic3]: AccompanyingFiles\\Pics\\3.jpg\n",
+    "[pic4]: AccompanyingFiles\\Pics\\4.jpg\n",
+    "[pic5]: AccompanyingFiles\\Pics\\5.jpg\n",
+    "[pic6]: AccompanyingFiles\\Pics\\6.jpg\n",
+    "[pic7]: AccompanyingFiles\\Pics\\7.jpg\n",
+    "[pic8]: AccompanyingFiles\\Pics\\8.jpg\n",
+    "[pic9]: AccompanyingFiles\\Pics\\9.jpg\n",
+    "[pic10]: AccompanyingFiles\\Pics\\10.jpg\n",
+    "[pic11]: AccompanyingFiles\\Pics\\11.jpg"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Шаг №3\n",
+    "Переходим по кликабельной [ссылке][link2] и скачиваем RStudio версии 1.2.5019 для Windows.\n",
+    "\n",
+    "[link2]: https://download1.rstudio.org/desktop/windows/RStudio-1.2.5019.exe\n",
+    "### Шаг №4\n",
+    "1. Запустим скаченный *(или прилагаемый)* установщик RStudio."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "!AccompanyingFiles\\Installation\\RStudio-1.2.5019.exe"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "2. Аналогично **шагу №2**, выберем все необходимые параметры.  \n",
+    "\n",
+    "\n",
+    "\n",
+    "![][pic12] | ![][pic13]\n",
+    "---|---\n",
+    "![][pic14] | ![][pic15]\n",
+    " \n",
+    "[pic12]: AccompanyingFiles\\Pics\\12.jpg\n",
+    "[pic13]: AccompanyingFiles\\Pics\\13.jpg\n",
+    "[pic14]: AccompanyingFiles\\Pics\\14.jpg\n",
+    "[pic15]: AccompanyingFiles\\Pics\\15.jpg\n",
+    "\n",
+    "\n",
+    "После запуска, RStudio сама завершит настройку себя, выбрав необходимые параметры, для установленного ранее языка программирования R.\n",
+    "\n",
+    "\n",
+    "## Результаты\n",
+    "В итоге мы получили установленную и корректно настроенную RStudio, готовую для работы. А также познакомились и научились работать с аналогичной RStudio среде - **Jupyter Notebook** "
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}

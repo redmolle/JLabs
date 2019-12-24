@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1575410543428.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8B847D84",
+    "lastKnownWriteTime" : 1575419757,
+    "last_content_update" : 1575419758009,
+    "path" : "~/Study/Uni/9/Data_Protection_Against_Unauthorized_Access/Labs/1/R/Report.Rmd",
+    "project_path" : "Report.Rmd",
+    "properties" : {
+        "cursorPosition" : "26,3",
+        "last_setup_crc32" : "CB304387bb338d19",
+        "scrollLine" : "19",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

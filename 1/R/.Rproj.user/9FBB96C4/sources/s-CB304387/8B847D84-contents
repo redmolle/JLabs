@@ -1,0 +1,75 @@
+---
+title: "Установка Jupyter Notebook"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Отчет составил: Князев Константин  
+Группа: БИСО-02-15
+
+
+## Цель работы
+
+Познакомиться со свободной средой разработки программного обеспечения RStudio с открытым исходным кодом для языка программирования R, который предназначен для статистической обработки данных и работы с графикой, благодаря установке интерактивной вычислительной среды Jupyter Notebook.
+
+## Введение
+Jupyter Notebook - интерактивная компьютерная среда для создания, исполнения и визуализации отчетов, способная выполнять команды на множестве языках, таких как Python, Ruby и т.д. Является одним из наиболее популярный и интуитивно простых сред для сотсавления и выполнения динамических отчетов.
+
+
+```{r exho=FALSE}
+library(ggplot2)
+library(readxl)
+percents <- read_excel("AccompanyingFiles\\Plots\\data.xlsx")
+attach(percents)
+ggplot(data = percents, aes(x="", y="", fill=Language)) + geom_bar(stat="identity", width=1, color = "white")+coord_polar("y", start=0) + theme_void() + labs(x="", y="", title="Перспективность языков программирования")
+```
+
+
+## Системные требования
+* ОС: Windows 10 версии 1909
+* Процессор: Intel Core i5
+* RAM: 8Гб DDR3
+* Более мощная конфигурация
+* **Для запуска отчета необходимо наличие некоторых библиотек**[^libs]
+
+[^libs]: Список необходимых библиотек: ggplot2, readxl
+
+## Этапы установки Jupyter Notebook
+1. Скачивание установщика Anaconda$
+2. Установка Anaconda
+
+### Шаг №1
+Переходим по кликабельной [ссылке][link1] для скачивания дистрибутивы Anaconda версии 2019.10 для Python 3.7 для Windows.
+
+[link1]: https://repo.anaconda.com/archive/Anaconda3-2019.10-Windows-x86_64.exe
+
+### Шаг №2
+Запускаем установщик только что скаченного либо прилагаемого дистрибутива Anaconda и выбираем необходимые параметры установки.
+
+![][pic1] | ![][pic2]
+---|---
+![][pic3] | ![][pic4]
+![][pic5] | ![][pic6]
+![][pic7] | ![][pic8]
+![][pic9] | ![][pic10]
+
+
+[pic1]: AccompanyingFiles\Pics\1.jpg
+[pic2]: AccompanyingFiles\Pics\2.jpg
+[pic3]: AccompanyingFiles\Pics\3.jpg
+[pic4]: AccompanyingFiles\Pics\4.jpg
+[pic5]: AccompanyingFiles\Pics\5.jpg
+[pic6]: AccompanyingFiles\Pics\6.jpg
+[pic7]: AccompanyingFiles\Pics\7.jpg
+[pic8]: AccompanyingFiles\Pics\8.jpg
+[pic9]: AccompanyingFiles\Pics\9.jpg
+[pic10]: AccompanyingFiles\Pics\10.jpg
+
+Процесс установки дистрибутива может занимать до 10 минут. При первом запуске программы Anaconda Navigator, система сама донастроит дистрибутив, что облегчает процесс развертования системы для работы с ней.
+
+## Вывод
+Не смотря на длительную установку, в результате имеем полностью настроенный и готовый к работе набор программ, включая Jupyter Notebook, запустив всего один установщик. 
+
+
